@@ -62,8 +62,7 @@ def search(request):
         message = f"Search results for \t {query}"
         messages.success(request,message)
         return render(request,'others/search.html',context)
-    else :
-        return HttpResponseRedirect('/')
+    return HttpResponseRedirect('/')
 
 
 def Contact(request):
@@ -84,9 +83,8 @@ def like(request,id):
             message = "Post Diliked"
         messages.success(request,message)
         return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
-    else :
-        messages.error(request,"you must login to like/Dislike  a post ")
-        return HttpResponseRedirect('/login')
+    messages.error(request,"you must login to like/Dislike  a post ")
+    return HttpResponseRedirect('/login')
     # return home(request)
 
 def deletepost(request,id):
@@ -95,6 +93,7 @@ def deletepost(request,id):
         data.delete()
         messages.success(request,"Post Deleted")
         return HttpResponseRedirect ('/profile')
+    HttpResponseRedirect('/')
 
     
 def contact(request):
@@ -270,8 +269,7 @@ def UserLogin(request):
                 return JsonResponse({"status":200})
             else:
                 return JsonResponse({"status":500,"msg":"Invalid Credentials! Try Again With correct"})
-    else:
-        return HttpResponseRedirect('/')
+    return HttpResponseRedirect('/')
 
 
 # *************************************************************************************************************
