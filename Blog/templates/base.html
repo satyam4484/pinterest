@@ -1,0 +1,80 @@
+<!doctype html>
+{% load static %}
+
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <script src="{% static 'js/font.js' %}" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+
+    <style>
+      footer {
+        margin-top:5vh;
+    }
+      {% block decorate %}
+      
+      {% endblock decorate %}
+    </style>
+
+    <title>Pinterest</title>
+
+  </head>
+  <body >
+
+  {% comment %} includde the navbar  {% endcomment %}
+    {% include 'home/nav.html'%}
+    {% include 'home/popup.html' %}
+
+      {% comment %} alert for messages  {% endcomment %}
+      {% if messages %}
+        {% for message in messages %}
+          <div {% if message.tags %} id="message" class="alert alert-{{ message.tags }} alert-dismissible fade show" {% endif %} role="alert">
+            <h3 class="text-center">{{ message }}
+              <button  id="close" style="float:right; background-color:light-grey;"type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </h3>
+          </div>
+        {% endfor %}
+      {% endif %}
+      
+
+    {% block content %}
+    
+    {% endblock content %}
+
+    {% include 'home/footer.html' %}
+   
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+    <script src="{% static 'js/jquery.js' %}"></script>
+    {% include 'home/credential.html' %}
+
+
+    {% block js %}{% endblock js %}
+    <script>
+      document.getElementById("addpostform").addEventListener("click",e=>{
+          document.getElementById("post").classList.remove("d-none");
+
+          document.getElementById("cancelpost").addEventListener("click",e=>{
+              document.getElementById("post").classList.add("d-none");
+          })
+      })
+      document.getElementById("close").addEventListener("click",e=>{
+        document.getElementById("message").classList.add("d-none");
+      })
+      setInterval(() => {
+        document.getElementById("message").classList.add("d-none");
+      }, 1000);
+
+      
+    
+    </script>
+    
+  </body>
+</html>

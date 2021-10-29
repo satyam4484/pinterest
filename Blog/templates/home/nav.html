@@ -1,0 +1,47 @@
+{% load static %}
+<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a href="/" class="navbar-brand mx-5">
+        <img src="{% static 'images/pin.png' %}" width="50" height="40" class="d-inline-block align-top" alt="">
+        </a>
+        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-between fs-4" id="navbarCollapse">
+            <div class="navbar-nav mx-auto">
+                <a href="/" class="nav-item nav-link"><i class="fas fa-home fa-lg"></i></a>
+
+                <form class="mt-2"   action="{% url 'search' %}" method="get">
+                  {% csrf_token %}
+                  <input class="form-control" spellcheck=false autocorrect="off" autocomplete="off" autocapitalize="off"  name='query' type="search" size="110" placeholder="What are you looking for ?....." > 
+                </form>
+                
+                {% if request.user.is_authenticated %}
+                  <div class="navbar-nav">
+                        <a id="addpostform" style="cursor: pointer;" class="nav-item nav-link text-danger fw-bold">Post </a>
+                  </div>
+                  <div class="nav-item dropdown ">
+                      <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">{{request.user}}</a>
+                      <div class="dropdown-menu">
+                          <a href="{% url 'profile' %}" class="dropdown-item">Profile</a>
+                            <a href="{% url 'contact' %}" data-bs-toggle="modal" data-bs-target="#contact" class="dropdown-item">Contact</a>
+                          <a href="{% url 'logout' %}" class="dropdown-item"> <i class="fas fa-sign-out-alt"></i>Logout</a>
+                      </div>
+                  </div>
+                {% else %}
+                <div class="d-flex">
+                  <div class="navbar-nav mx-2">
+                      <a href="#" class="nav-item nav-link" data-bs-toggle="modal" data-bs-target="#modalForm" id="signupform"> <i class="fas fa-user-plus"></i> Signup </a>
+                  </div>
+                  <div class="navbar-nav mx-2">
+                      <a href="{% url 'login' %}" class="nav-item nav-link" data-bs-toggle="modal" data-bs-target="#modalForm" id="loginform"><i class="fas fa-sign-in-alt"></i> Login </a>
+                  </div>
+                </div>
+                {% endif %}
+            </div>
+            
+        </div>
+    </div>
+</nav>
+
+

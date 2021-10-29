@@ -1,0 +1,95 @@
+
+<div class="modal fade" id="modalForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-center fs-3 fw-bold" id="exampleModalLabel">Welcome to pinterest </h5>
+                {% comment %} <img src="{% static 'pin.png' %}" width="50" height="40" class="d-inline-block align-top float" alt=""> {% endcomment %}
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- <form method="POST"> -->
+                <div>
+                    {% csrf_token %}
+                    <small id="error" class="alert alert-danger  d-none"></small>
+                    <div class="mb-3">
+                        <label class="form-label">Username</label>
+                        <input type="text" class="form-control" id="username" name="username" placeholder="Username" />
+                    </div>
+                    <div class="mb-3 d-none" id="mail">
+                        <label class="form-label">Email Address</label>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Email" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Password" />
+                    </div>
+                    
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="seepassword" />
+                        <label class="form-check-label" for="rememberMe">See Password</label>
+                    </div>
+                    
+                    <div class="modal-footer d-block ">
+                        <button type="button" id="signuppage" class="btn btn-warning float-end d-none">Submit</button>
+                        <button type="button" id="loginpage" class="btn btn-success float-end d-none">Login</button>
+                    </div>
+                <!-- </form> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div class="modal fade" id="contact" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-center fs-3 fw-bold" id="exampleModalLabel">Contact Us </h5>
+                {% comment %} <img src="{% static 'pin.png' %}" width="50" height="40" class="d-inline-block align-top float" alt=""> {% endcomment %}
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- <form method="POST"> -->
+                {% comment %} <div id="map-container-google-1" class="z-depth-1 map-container mb-5"> {% endcomment %}
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3773.732894254934!2d72.82081091501911!3d18.943213487164268!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7d1e25ee8439d%3A0x5acd924f2726ad2b!2sMarine%20Dr%2C%20Mumbai!5e0!3m2!1sen!2sin!4v1634401757859!5m2!1sen!2sin" width="450" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            {% comment %} </div > {% endcomment %}
+                <div class="row mt-2">
+                    <div class="col-lg-5 col-md-12 mb-0 mb-md-0">
+                        {% comment %} <h4 class="mb-3"><strong>Ecommerce</strong></h4> {% endcomment %}
+                        <hr>
+                        <p class="mb-1"><strong>Address:</strong> </p>
+                        <p class="mb-1">Wagheshwar Temple Talathi Office MOZE Campus, Gat No 1178, Baif Rd,  </p>
+                        <p class="mb-1">Wagholi, Pune,412207</p>
+                        <p class="mb-1">Maharashtra </p>
+                        <hr>
+                    </div>
+                    <!--Grid column-->
+
+                    <!---Form for contacting -->
+                    <div class="col-lg-7 col-md-12 mb-4 mb-md-0 text-center">
+                        <form class="">
+                        <div class="md-form md-outline">
+                            <input type="text" id="form-subject" class="form-control" placeholder="Name">
+                        </div>
+
+                        <div class="md-form md-outline mt-3">
+                            <input type="email" id="form-email" class="form-control" placeholder="E-mail">
+                        </div>
+
+                        <div class="md-form md-outline mt-3">
+                            <textarea id="form76" class="md-textarea form-control" placeholder="Your message"rows="4"></textarea>
+                        </div>
+                            <button type="submit" class="btn btn-primary btn-md ml-0 mt-3 waves-effect waves-light">Send</button>
+                        </form>
+                    </div>
+                    {% comment %} form ends here with div  {% endcomment %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
